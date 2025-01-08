@@ -1,0 +1,8 @@
+<template>
+    <p>Parent</p>
+    <p>Parent Id {recordId} </p>
+
+    <template if:true={isConnected}>
+        <c-child trainingid={recordId}></c-child>
+    </template>
+</template>

@@ -1,0 +1,17 @@
+<template>
+
+
+    <template if:true={participants}>
+        <lightning-datatable
+            key-field="Id"
+            data={participants}
+            columns={participantColumns}>
+        </lightning-datatable>
+    </template>
+
+    <template if:true={error}>
+        <p>{error}</p>
+    </template>
+
+
+</template>

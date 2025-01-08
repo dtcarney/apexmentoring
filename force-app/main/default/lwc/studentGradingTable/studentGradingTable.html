@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Student Grading Table">
+        <!-- Display error message if hasError is true -->
+        <template if:true={hasError}>
+            <div class="slds-box slds-theme_default">
+                <lightning-formatted-text value={errorMessage}></lightning-formatted-text>
+            </div>
+        </template>
+
+        <!-- Search component, displayed if isConnected is true -->
+        <template if:true={isConnected}>
+            <c-student-grading-table-search
+                trainingid={recordId}
+                onimportparticipant={handleImportParticipant}
+                onreloadparticipants={loadParticipants}
+            ></c-student-grading-table-search>
+        </template>
+
+        <div class="slds-p-around_medium">
+            <!-- Display custom ParticipantDataTable if ERP data is loaded -->
+            <template if:true={erpLoaded}>
+                <c-participant-data-table
+                    key-field="Id"
+                    options={options}
+                    data={participants}
+                    columns={columns}
+                    onsave={handleSave}
+                    draft-values={draftValues}
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={onHandleSort}
+                    onstatuschange={handleStatusChange}
+                ></c-participant-data-table>
+            </template>
+
+            <!-- Show loading spinner if ERP data is not loaded -->
+            <template if:false={erpLoaded}>
+                <lightning-spinner alternative-text="Loading" size="medium" variant="base"></lightning-spinner>
+            </template>
+        </div>
+    </lightning-card>
+</template>

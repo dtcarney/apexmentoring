@@ -1,0 +1,23 @@
+<template>
+ 
+    <lightning-card title=" Adding custom type picklist and toggel " icon-name="standard:contact">
+        <template if:true={contacts}>
+          
+            <c-custom-dt-type-lwc
+            key-field="Id"
+            data={contacts} 
+            columns={columns} 
+            draft-values={saveDraftValues} 
+            onsave={handleSave}
+            ontoggelselect={handletoggelselect}
+            oncellchange={handleCellChange}
+            oncancel={handleCancel}
+            hide-checkbox-column 
+            show-row-number-column
+        >
+       
+        </c-custom-dt-type-lwc>
+        </template>
+    </lightning-card>
+ 
+ </template>

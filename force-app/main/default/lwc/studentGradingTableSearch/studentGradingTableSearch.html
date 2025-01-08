@@ -1,0 +1,30 @@
+<template>
+
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-3 slds-align_absolute-center">
+        <lightning-input 
+            type="number" 
+            name="erpId" 
+            value={id} 
+            onchange={handleIdChange}  
+            label="Enter an Id"
+        ></lightning-input>
+
+    </div>
+        <div class="slds-col slds-size_2-of-3 slds-align_absolute-center">
+        <lightning-button 
+            variant="brand" 
+            label="Add Participant" 
+            title="Primary action" 
+            onclick={handleAddParticipantFromERPClick}
+        ></lightning-button>
+        <lightning-button 
+        variant="success" 
+        label="New Participant" 
+        title="Primary action" 
+        onclick={handleNewParticipantClick}
+    ></lightning-button>
+        </div>
+    </div>
+
+</template>

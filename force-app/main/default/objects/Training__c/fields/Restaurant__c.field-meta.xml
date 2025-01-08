@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Restaurant__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>If training takes too long, the restaurant will be included</inlineHelpText>
+    <label>Restaurant</label>
+    <referenceTo>Restaurant__c</referenceTo>
+    <relationshipLabel>Trainings</relationshipLabel>
+    <relationshipName>Trainings</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
