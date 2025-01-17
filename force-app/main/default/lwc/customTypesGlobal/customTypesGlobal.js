@@ -1,12 +1,14 @@
+import LightningDatatable from 'lightning/datatable';
+import customPicklistStatic from './customPicklistStatic.html';
+import customPicklistColumn from './customPicklistColumn.html';
 
-import customPicklist from './customPicklist.html';
-
-export default class CustomTypesGlobal extends LightningDataTable {
+export default class CustomTypesGlobal extends LightningDatatable {
     static customTypes = {
-        priorityPicklist: {
-            template: customPicklist,
+        statusPicklist: {
+            template: customPicklistStatic,
+            editTemplate: customPicklistColumn,
             standardCellLayout: true,
-            typeAttributes: ['label','value', 'placeholder'] 
+            typeAttributes: ['label', 'value', 'placeholder', 'options', 'context']
         }
     }
 }

@@ -23,12 +23,12 @@ export default class StudentGradingTable extends LightningElement {
         { label: 'Training Course', fieldName: 'TrainingName' },
         {
             label: 'Status',
-            fieldName: 'Status__c', // Use the exact API name here
+            fieldName: 'Status', // Use the exact API name here
             editable: true,
             type: 'customPicklist', // Custom type for picklist created in ParticipantStatus
             typeAttributes: {
                 placeholder: 'Choose status',
-                value: { fieldName: 'Status__c' },
+                value: { fieldName: 'Status' },
                 recordId: { fieldName: 'Id' },
                 options: { fieldName: 'options' }
             }
@@ -66,16 +66,11 @@ export default class StudentGradingTable extends LightningElement {
     wiredPicklistValues({ error, data }) {
         console.log('hitting wire method for picklist values');
 
-        // If data is available, process it
         if (data) {
-            console.log('Received picklist values:', data);
             this.options = data.values; // Extract the picklist options
-            console.log('Processed picklist options:', this.options);
-
-            this.participants.forEach(part => {
-                part.options = this.options;
-            });
             this.erpLoaded = true;
+
+            console.log('Participants with options:', JSON.stringify(this.participants));
         }
         // If an error occurred, log it
         else if (error) {
@@ -101,6 +96,11 @@ export default class StudentGradingTable extends LightningElement {
                 console.log('Participants:', this.participants);
                 this.errorMessage = '';
                 this.hasError = false;
+
+                for(let participant of this.participants) {
+                    participant.options = this.options;
+                    console.log('Participant:', participant);
+                }
             })
             .catch(error => {
                 this.error = error;

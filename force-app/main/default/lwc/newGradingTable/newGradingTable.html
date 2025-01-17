@@ -1,0 +1,22 @@
+<template>
+
+        <lightning-card title="Student Grading Table" icon-name="standard:education">
+            <c-custom-types-global
+                key-field="Id"
+                data={participants}
+                columns={columns}
+                errors={error}
+                draft-values={draftValues}
+                show-row-number-column
+                hide-checkbox-column
+                onsave={handleSave}
+                onrowaction={handleRowAction}
+                oncancel={handleCancel}
+                oncellchange={handleCellChange}
+                onaddrow={handleAddRow}
+            >
+            </c-custom-types-global>
+        
+        </lightning-card>
+
+</template>

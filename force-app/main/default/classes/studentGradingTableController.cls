@@ -1,7 +1,7 @@
 public with sharing class studentGradingTableController {
 
     
-    @AuraEnabled
+    @AuraEnabled(cacheable = true)
     public static List<ParticipantWrapper> getParticipants(Id recordId) {
         List<Participant__c> participants = [
             SELECT Id, Name,Grade__c,Status__c, Training__r.Name, Passed__c, Contact_Name__r.Name, Contact_Name__r.Email, ErpId__c 
@@ -13,6 +13,12 @@ public with sharing class studentGradingTableController {
         for (Participant__c participant: participants){
             wrappedParticipants.add(new ParticipantWrapper(participant));
             }
+        System.debug('getParticipants wrappedParticipants: '+ wrappedParticipants);
+        for (ParticipantWrapper wrapper: wrappedParticipants){
+            System.debug('wrapper: '+ wrapper);
+        }
+        System.debug('participants size : ' + wrappedParticipants.size());
+
         return wrappedParticipants;
     }
 
@@ -134,6 +140,7 @@ public with sharing class studentGradingTableController {
             this.participantUrl = '/' + participant.Id;
             this.TrainingName = participant?.Training__r?.Name; // != null ? participant.Training__r.Name : null;
             this.ContactName = participant.Contact_Name__r != null ? participant.Contact_Name__r.Name : null;
+            System.debug('Contact Name: '+ this.ContactName);
             this.ContactId = participant.Contact_Name__c;
             this.ContactEmail = participant.Contact_Name__r.Email != null ? participant.Contact_Name__r.Email : null;
             this.Passed = participant.Passed__c;
