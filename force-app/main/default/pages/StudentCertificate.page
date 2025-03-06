@@ -1,0 +1,40 @@
+<apex:page controller="StudentCertificateController" renderAs="pdf" showHeader="false" sidebar="false" applyBodyTag="false" >
+
+    <head>
+        <style>
+            @page{
+                    background-image: url("{!$Resource.Cert_Background}");
+                    background-repeat: no-repeat !important;
+                    background-position: center center !important;
+                    background-size: 100% 100% !important;
+                    size: A4 landscape;
+            }
+        .container{
+            padding-top: 6cm;
+            padding-left: 1cm;
+            padding-right: 1cm;
+            padding-bottomg: 1cm;
+        }
+        .training-name{
+            font-size: 1.5cm;
+            padding-left: 1cm; 
+            font-weight: bold;
+            text-align: center;
+
+        }
+
+        </style>
+    </head>
+    <div class="container">
+        <div class="training-name">Student Certificate for Training Name: {!trainingName}</div>
+        <div>
+            <apex:outputText value="Date of completion : {0, date, MMMM d',' yyyy}">
+                <apex:param value="{!endDate}"/>
+            </apex:outputText>
+        </div>
+        <div>Trainer Name: {!trainerName}</div>
+        <div>Participant Name: {!participantName}</div>
+        
+    </div>
+
+</apex:page>

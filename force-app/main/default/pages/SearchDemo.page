@@ -1,0 +1,8 @@
+<apex:page controller="SearchDemoController">
+
+    <apex:form>
+                <apex:inputText value="{!trainingId}" />
+                <apex:commandButton value="Search" action ="{!search}" />
+                <apex:outputText value ="{!trainingName}"/>
+    </apex:form>
+</apex:page>

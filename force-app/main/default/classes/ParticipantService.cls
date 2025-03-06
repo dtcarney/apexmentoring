@@ -7,7 +7,7 @@ public with sharing class ParticipantService {
     
 
     /**
-    * This method has two business process - inscreasing the count and recalculating commision forecast
+    * This method has two business process - increasing the count and recalculating commision forecast
     *
     */
 

@@ -1,0 +1,19 @@
+<apex:page controller="SearchDemoController2" >
+
+    <script>
+        function search(){
+            var searchField = document.getElementById('searchField').value;
+            SearchDemoController2.search(searchField, displayResults);
+        }
+
+        function displayResults(results, event){
+            document.getElementById('searchResults').innerHTML = results;
+        }
+
+    </script>
+
+    <input type="text" id="searchField" name="search" />
+    <button onclick="search()">Search</button>
+    <div id="searchResults"></div>
+
+</apex:page>

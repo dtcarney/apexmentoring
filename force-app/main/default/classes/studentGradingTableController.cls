@@ -38,6 +38,8 @@ public with sharing class studentGradingTableController {
             Participant__c participant = new Participant__c(Id = wrapper.Id);
             participant.Grade__c = wrapper.Grade;
             participant.Passed__c = (wrapper.Passed != null) ? wrapper.Passed : false;
+            participant.Status__c = wrapper.Status;
+            System.debug('wrapper: '+ wrapper);
             participantsToUpdate.add(participant);
             participantIds.add(participant.Id);
         }
