@@ -1,11 +1,5 @@
 public with sharing class StudentCertificateController {
-
-    /*
-    * Training Name
-    * End Date
-    * Topic
-    * Trainer's Name and signature
-    */  
+ 
     public String trainingName {get;set;}
     public DateTime endDate {get;set;}
     public String trainerName {get;set;}
