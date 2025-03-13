@@ -18,7 +18,7 @@ public with sharing class SimpleListOps {
         return inputList[index];
     }
 
-    public List<String> getFirstAndList(List<String> inputList){
+    public List<String> getFirstAndLast(List<String> inputList){
 
         List<String> result = new List<String>();
         if(inputList.size() >= 2){
